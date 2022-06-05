@@ -5,6 +5,7 @@
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
     "strict": true,
+    "allowJs": true,
     "esModuleInterop": true,
     "jsx": "preserve",
     "skipLibCheck": true,

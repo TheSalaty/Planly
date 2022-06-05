@@ -2,8 +2,10 @@
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
-import { CheckIcon, ThumbUpIcon, UserIcon } from '@heroicons/vue/solid'
+import TaskCard from './components/TaskCard.vue'
 import { isDark, preferredDark } from '~/composables'
+
+const router = useRouter()
 
 useHead({
   title: 'Vitesse',
@@ -23,62 +25,35 @@ useHead({
   ],
 })
 
-const tabs = [
-  { name: 'Kalender', href: '/kalender', current: false },
-  { name: 'Tasks', href: '/tasks', current: true },
-  { name: 'E-Kacheln', href: '/e-kachel', current: false },
-]
+const tabs = computed(() => {
+  const path = router.currentRoute.value.fullPath
 
-const timeline = [
+  return [
+    { name: 'Kalender', href: '/kalender', current: path === '/kalender' },
+    { name: 'Tasks', href: '/tasks', current: path === '/tasks' },
+    { name: 'E-Kacheln', href: '/e-kachel', current: path === '/e-kachel' },
+  ]
+},
+)
+
+const tasks = [
   {
-    id: 1,
-    content: 'Applied to',
-    target: 'Front End Developer',
-    href: '#',
-    date: 'Sep 20',
-    datetime: '2020-09-20',
-    icon: UserIcon,
-    iconBackground: 'bg-gray-400',
+    id: 6,
+    title: 'Design shopping cart dropdown',
+    date: 'Sep 9',
+    type: 'Design',
   },
   {
-    id: 2,
-    content: 'Advanced to phone screening by',
-    target: 'Bethany Blake',
-    href: '#',
-    date: 'Sep 22',
-    datetime: '2020-09-22',
-    icon: ThumbUpIcon,
-    iconBackground: 'bg-blue-500',
+    id: 7,
+    title: 'Add discount code to checkout page',
+    date: 'Sep 14',
+    type: 'Feature Request',
   },
   {
-    id: 3,
-    content: 'Completed phone screening with',
-    target: 'Martha Gardner',
-    href: '#',
-    date: 'Sep 28',
-    datetime: '2020-09-28',
-    icon: CheckIcon,
-    iconBackground: 'bg-green-500',
-  },
-  {
-    id: 4,
-    content: 'Advanced to interview by',
-    target: 'Bethany Blake',
-    href: '#',
-    date: 'Sep 30',
-    datetime: '2020-09-30',
-    icon: ThumbUpIcon,
-    iconBackground: 'bg-blue-500',
-  },
-  {
-    id: 5,
-    content: 'Completed interview with',
-    target: 'Katherine Snyder',
-    href: '#',
-    date: 'Oct 4',
-    datetime: '2020-10-04',
-    icon: CheckIcon,
-    iconBackground: 'bg-green-500',
+    id: 8,
+    title: 'Provide documentation on integrations',
+    date: 'Sep 12',
+    type: 'Backend',
   },
 ]
 </script>
@@ -101,8 +76,8 @@ const timeline = [
       </div>
       <div class="hidden sm:block">
         <nav class="relative z-0 rounded-lg shadow flex divide-x divide-gray-200" aria-label="Tabs">
-          <a
-            v-for="(tab, tabIdx) in tabs" :key="tab.name" :href="tab.href"
+          <router-link
+            v-for="(tab, tabIdx) in tabs" :key="tab.name" :to="tab.href"
             class="group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-sm font-medium text-center hover:bg-gray-50 focus:z-10"
             :class="[tab.current ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700', tabIdx === 0 ? 'rounded-l-lg' : '', tabIdx === tabs.length - 1 ? 'rounded-r-lg' : '']"
             :aria-current="tab.current ? 'page' : undefined"
@@ -112,7 +87,7 @@ const timeline = [
               aria-hidden="true" class="absolute inset-x-0 bottom-0 h-0.5"
               :class="[tab.current ? 'bg-indigo-500' : 'bg-transparent']"
             />
-          </a>
+          </router-link>
         </nav>
       </div>
     </div>
@@ -121,30 +96,12 @@ const timeline = [
   <div class="flex flex-row w-full">
     <div w-50>
       <div class="flow-root">
-        <ul role="list" class="-mb-8">
-          <li v-for="(event, eventIdx) in timeline" :key="event.id">
-            <div class="relative pb-8">
-              <span v-if="eventIdx !== timeline.length - 1" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
-              <div class="relative flex space-x-3">
-                <div>
-                  <span class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white" :class="[event.iconBackground]">
-                    <component :is="event.icon" class="h-5 w-5 text-white" aria-hidden="true" />
-                  </span>
-                </div>
-                <div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
-                  <div>
-                    <p class="text-sm text-gray-500">
-                      {{ event.content }} <a :href="event.href" class="font-medium text-gray-900">{{ event.target }}</a>
-                    </p>
-                  </div>
-                  <div class="text-right text-sm whitespace-nowrap text-gray-500">
-                    <time :datetime="event.datetime">{{ event.date }}</time>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <task-card
+          v-for="task in tasks"
+          :key="task.id"
+          :task="task"
+          class="mt-3 cursor-move"
+        />
       </div>
     </div>
     <div class="w-full">

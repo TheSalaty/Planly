@@ -17,10 +17,10 @@
         <p class=" w-36">
           wichtig
         </p>
-        <div class="w-150 h-150 mx-5 rounded-2xl bg-red-400">
+        <div class="w-150 h-150 mx-5 rounded-2xl bg-gray-50 border-2 border-slate-300 p-4 shadow-sm">
           A Aufgaben
         </div>
-        <div class="w-150 h-150 mx-5 rounded-2xl  bg-red-400">
+        <div class="w-150 h-150 mx-5 rounded-2xl  bg-gray-50 border-2 border-slate-300 p-4 shadow-sm">
           B Aufgaben
         </div>
       </div>
@@ -28,10 +28,10 @@
         <p class="  w-36">
           nichtig
         </p>
-        <div class="w-150 h-150 mx-5 rounded-2xl  bg-red-400">
+        <div class="w-150 h-150 mx-5 rounded-2xl  bg-gray-50 border-2 border-slate-300 p-4 shadow-sm">
           C Aufgaben
         </div>
-        <div class="w-150 h-150 mx-5 rounded-2xl  bg-red-400">
+        <div class="w-150 h-150 mx-5 rounded-2xl  bg-gray-50 border-2 border-slate-300 p-4 shadow-sm">
           D Aufgaben
         </div>
       </div>

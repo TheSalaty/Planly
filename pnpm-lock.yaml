@@ -41,7 +41,9 @@ specifiers:
   vue-demi: ^0.12.5
   vue-i18n: ^9.1.10
   vue-router: ^4.0.15
+  vue-simple-calendar: ^6.0.4
   vue-tsc: ^0.34.12
+  vuedraggable: ^2.24.3
 
 dependencies:
   '@headlessui/vue': 1.6.2_vue@3.2.33
@@ -56,6 +58,8 @@ dependencies:
   vue-demi: 0.12.5_vue@3.2.33
   vue-i18n: 9.1.10_vue@3.2.33
   vue-router: 4.0.15_vue@3.2.33
+  vue-simple-calendar: 6.0.4
+  vuedraggable: 2.24.3
 
 devDependencies:
   '@antfu/eslint-config': 0.23.0_eslint@8.15.0+typescript@4.6.4
@@ -6245,6 +6249,10 @@ packages:
       is-fullwidth-code-point: 3.0.0
     dev: true
 
+  /sortablejs/1.10.2:
+    resolution: {integrity: sha512-YkPGufevysvfwn5rfdlGyrGjt7/CRHwvRPogD/lC+TnvcN29jDpCifKP+rBqf+LRldfXSTh+0CGLcSg0VIxq3A==}
+    dev: false
+
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -7187,6 +7195,12 @@ packages:
       vue: 3.2.33
     dev: false
 
+  /vue-simple-calendar/6.0.4:
+    resolution: {integrity: sha512-DgTN3ePQqtPSAbOw9GWk/o7vwQO9lOBUymKpYFVW/2TOjX7m/bESXszMX2KzcNaMzdJUeVcM04j5ZlziYTQapQ==}
+    dependencies:
+      vue: 3.2.33
+    dev: false
+
   /vue-tsc/0.34.12_typescript@4.6.4:
     resolution: {integrity: sha512-CmuqLXHEW5UvS8UpT2RYom5MzOWBD142PLXxDX0ARdZ/u1oLobA3od4XY2XZACQYCFCzjTvfD1H5wrWwiGwoUA==}
     hasBin: true
@@ -7205,6 +7219,12 @@ packages:
       '@vue/runtime-dom': 3.2.33
       '@vue/server-renderer': 3.2.33_vue@3.2.33
       '@vue/shared': 3.2.33
+    dev: false
+
+  /vuedraggable/2.24.3:
+    resolution: {integrity: sha512-6/HDXi92GzB+Hcs9fC6PAAozK1RLt1ewPTLjK0anTYguXLAeySDmcnqE8IC0xa7shvSzRjQXq3/+dsZ7ETGF3g==}
+    dependencies:
+      sortablejs: 1.10.2
     dev: false
 
   /w3c-hr-time/1.0.2:
