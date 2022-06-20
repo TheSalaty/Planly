@@ -60,7 +60,7 @@ const tasks = [
 
 <template>
   <div class="flex flex-row h-25">
-    <img class="m-2" src="https://placekeanu.com/100/100" alt="">
+    <img class="m-2" src="planly.png" alt="">
     <div class="w-full">
       <div class="sm:hidden">
         <label for="tabs" class="sr-only">Select a tab</label>
@@ -94,13 +94,13 @@ const tasks = [
     <img src="https://placekeanu.com/90/90" class="rounded-full m-2" alt="">
   </div>
   <div class="flex flex-row w-full">
-    <div w-50>
+    <div class="w-60 mx-5">
       <div class="flow-root">
         <task-card
           v-for="task in tasks"
           :key="task.id"
           :task="task"
-          class="mt-3 cursor-move"
+          class="mt-3 cursor-move  shadow-md w-full"
         />
       </div>
     </div>
